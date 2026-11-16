@@ -1,6 +1,6 @@
 # 🏥 NHS Operations & Capacity Analysis: 5-Year Waitlist Dashboard
 
-![NHS Dashboard](3_dashboard_presentation/nhs_executive_dashboard_2026.png)
+![NHS Dashboard](3_dashboard_presentation/nhs_dashboard.png)
 
 ## 📌 Executive Summary
 This project analyzes the National Health Service (NHS) elective care waitlist, which recently surpassed 7.1 million patients. Using PostgreSQL for backend data engineering and Microsoft Excel for the front-end presentation layer, I built an interactive Executive Dashboard designed to answer critical capacity and resource allocation questions for healthcare leadership.
