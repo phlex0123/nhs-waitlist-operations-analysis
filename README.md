@@ -24,6 +24,24 @@ The final dashboard moves beyond standard reporting to act as an operational com
 5. **Which medical specialists must HR prioritize for recruitment?** 
    * *Finding:* Trauma/Orthopaedics and Ophthalmology alone account for over 1.3 million backlogged patients, dictating a highly targeted clinical hiring strategy.
 
+## 🧠 Analytical Methodology & Strategic Recommendations
+
+### The Data Quality Trap (Methodology)
+A standard aggregation of the NHS dataset yields a mathematically inaccurate 18-week compliance rate. Because the raw data captures a weekly snapshot, grouping the data temporally (e.g., by quarter) artificially inflates the backlog volume if summed. 
+*   **The Fix:** I engineered the Excel data model to calculate the true volume-weighted compliance rate dynamically, rather than relying on unweighted Pivot Table averages that grant equal mathematical weight to a 10-patient rural clinic and a 150,000-patient urban hospital. 
+*   **The SQL Audit:** I utilized `COALESCE()` in the PostgreSQL views to convert `NULL` values (which represented zero waitlist patients in high-performing hospitals) into `0.0`. Failing to do this would have mathematically dropped 309 hospitals from the denominator, skewing the national average.
+
+### Core Analytical Insights
+1. **The Capacity Deficit is Structural, Not Seasonal:** The dual-line Inflow vs. Outflow chart demonstrates that the NHS is not suffering from seasonal demand spikes (like winter flu surges). Instead, `total_inflow_added` consistently outpaces `total_outflow_treated` week over week for 5 years, indicating a chronic shortage of physical beds or clinical staff.
+2. **The 52+ Week Crisis:** While the total waitlist grew by 31.62% over five years, the Stacked Area chart reveals that the growth is disproportionately concentrated in the extreme wait bands (52 to 104+ weeks). The system is failing the most complex, long-term cases.
+3. **The Funnel Bottleneck:** General Practitioners (GPs) account for over 38 million system entries. The inflow is highly concentrated at the primary care level.
+
+### Strategic Business Recommendations
+Based on the data modeling, I recommend the following operational shifts for NHS leadership:
+*   **Targeted CapEx Deployment:** Freeze blanket national funding. Divert emergency capital expenditure specifically to **Manchester University** and **Mid And South Essex** trusts, which are carrying the highest raw patient volume.
+*   **Clinical Recruitment Pivot:** The data proves the backlog is heavily localized in **Trauma/Orthopaedics** and **Ophthalmology**. HR must shift recruitment budgets away from general medicine to target these specific surgical specialists.
+*   **Upstream GP Interception:** Because GPs are the primary demand driver, funding must be allocated to community diagnostic centers (CDCs) to intercept and treat minor cases before they hit the acute hospital waitlist.
+
 ## 🛠️ Technical Stack
 * **Database:** PostgreSQL (pgAdmin 4)
 * **Data Processing & Cleaning:** SQL (Views, Aggregations, COALESCE, CTEs)
