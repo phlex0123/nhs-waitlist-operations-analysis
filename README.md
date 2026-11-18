@@ -47,6 +47,17 @@ Based on the data modeling, I recommend the following operational shifts for NHS
 * **Data Processing & Cleaning:** SQL (Views, Aggregations, COALESCE, CTEs)
 * **Visualization:** Microsoft Excel (Advanced Pivot Tables, Dynamic KPI Engine, Interactive Timeline Slicers)
 
+## 📁 Repository Structure
+* **`1_sql_engineering/`**: Contains `setup_and_load.sql` to recreate the database, alongside the queries used to audit the raw data and build the 5 production views.
+* **`2_data_exports/`**: Contains the clean CSV datasets extracted from the PostgreSQL views that power the dashboard.
+* **`3_dashboard_presentation/`**: Contains the high-resolution dashboard screenshot and the interactive `.xlsx` tool.
+
+
+## 🚀 How to Reproduce This Project
+1. Clone this repository to your local machine.
+2. Open pgAdmin (or your preferred PostgreSQL client) and execute the `1_sql_engineering/setup_and_load.sql` script to automatically generate the database, create the tables, and import the raw CSV files.
+3. Open `3_dashboard_presentation/nhs_waitlist_tool.xlsx` to interact with the final dashboard. *(Ensure macros/content are enabled to utilize the timeline slicers).*
+
 ## 📁 Repository Contents
 * **`1_sql_engineering/`**: Contains the SQL queries used to audit the raw data and build the 5 production views.
 * **`2_data_exports/`**: Contains the clean CSV datasets powering the dashboard. *(Raw data omitted for size; sourced from NHS England).*
